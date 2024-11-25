@@ -20,9 +20,23 @@ describe('UserEntity unit tests', () => {
     expect(sut.name).toEqual(props.name);
     expect(typeof sut.name).toBe('string');
   });
+
+  it('Setter of name field', () => {
+    sut['name'] = 'other name';
+    expect(sut.name).toBeDefined();
+    expect(sut.name).toEqual('other name');
+    expect(typeof sut.name).toBe('string');
+  });
   it('Getter of email field', () => {
     expect(sut.email).toBeDefined();
     expect(sut.email).toEqual(props.email);
+    expect(typeof sut.email).toBe('string');
+  });
+
+  it('Setter of email field', () => {
+    sut['email'] = 'other email';
+    expect(sut.email).toBeDefined();
+    expect(sut.email).toEqual('other email');
     expect(typeof sut.email).toBe('string');
   });
   it('Getter of password field', () => {
@@ -30,8 +44,25 @@ describe('UserEntity unit tests', () => {
     expect(sut.password).toEqual(props.password);
     expect(typeof sut.password).toBe('string');
   });
+
+  it('Setter of password field', () => {
+    sut['password'] = 'other password';
+    expect(sut.password).toBeDefined();
+    expect(sut.password).toEqual('other password');
+    expect(typeof sut.password).toBe('string');
+  });
   it('Getter of createdAt field', () => {
     expect(sut.createdAt).toBeDefined();
     expect(sut.createdAt).toBeInstanceOf(Date);
+  });
+
+  it('Should update a user', () => {
+    sut.update('other name');
+    expect(sut.props.name).toEqual('other name');
+  });
+
+  it('Should update the password field', () => {
+    sut.updatePassword('other password');
+    expect(sut.props.password).toEqual('other password');
   });
 });
